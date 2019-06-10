@@ -4,13 +4,17 @@ require_relative "../app/models/Allergy.rb"
 
 RSpec.describe Allergy do
     describe "#all" do
-        let(:allergy){Allergy.new}
+        let(:allergy){Allergy.new("cheese")}
         it "can be initialized" do
-            expect(allergy).to_be_an_instance_of(Allergy)
+            expect(allergy).to be_an_instance_of(Allergy)
         end
 
         it "Has an #all method" do
-            expect(allergy.all).to_be_an_instance_of.(Array)
+            expect(Allergy.all).to be_an_instance_of(Array)
+        end
+
+        it "#all includes cheese" do
+            expect(Allergy.all[0].allergen).to eq("cheese")
         end
     end
 end
