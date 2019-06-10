@@ -1,6 +1,4 @@
-require_relative "User.rb"
 require_relative "Recipe.rb"
-
 
 class RecipeCard
     @@all = []
@@ -11,7 +9,12 @@ class RecipeCard
         @rating = rating
         @user = user
         @recipe = recipe
+        #@title = title
         @@all << self
+    end
+
+    def self.all
+        @@all
     end
 
 end

@@ -1,12 +1,16 @@
-require_relative "Recipe.rb"
+require_relative "RecipeCard.rb"
+require_relative "User.rb"
+require "date"
 
 class User
     @@all = []
 
     attr_reader :allergens
+    attr_accessor :recipe_cards
 
     def initialize()
         @allergens = []
+        @recipe_cards = []
         @@all << self
     end
     
@@ -24,5 +28,15 @@ class User
 
     def self.all
         @@all
+    end
+
+    def add_recipe_card(recipe, date, rating)
+        new_recipe = RecipeCard.new(date, rating, self, recipe)
+        @recipe_cards << new_recipe
+    end
+
+    def recipes
+        @recipe_cards.map{|card| card.recipe}
+        binding.pry
     end
 end
